@@ -1,16 +1,37 @@
-Opis ćwiczenia: Docker + Ubuntu + Nmap
+# Ubuntu-Nmap Docker Lab
 
-1. Uruchomiłem kontener z Ubuntu w Docker Desktop.
-2. Wszedłem do terminala kontenera jako root (#) i zainstalowałem nmap przez apt.
-3. Sprawdziłem wersję nmap i upewniłem się, że działa.
-4. Zapisałem stan kontenera (docker commit) jako obraz lokalny o nazwie: adam55/ubuntu-nmap
-5. W GUI sprawdziłem obraz i przeanalizowałem podatności (Docker Scout).
-6. Widzę teraz ten obraz w zakładce 'Images' i mogę go użyć w przyszłości.
+## Cel ćwiczenia
+Stworzenie kontenera Docker z systemem Ubuntu, instalacja narzędzia `nmap` oraz zapisanie zmodyfikowanego obrazu do późniejszego wykorzystania.
 
-Użyte polecenia (m.in.):
-- docker ps -a
-- docker commit happy_babbage adam55/ubuntu-nmap
-- apt install nmap
-- nmap -v
+## Kroki wykonane w ćwiczeniu
 
-Cel: przygotować gotowe środowisko testowe z nmap w kontenerze.
+1. **Uruchomienie kontenera Ubuntu z poziomu Docker Desktop GUI.**
+   - Użyty obraz: `ubuntu:latest`
+   - Uruchomienie kontenera w trybie interaktywnym (`bash`)
+
+2. **Zainstalowanie narzędzia `nmap` wewnątrz kontenera:**
+   ```bash
+   apt update && apt install nmap -y
+   ```
+
+3. **Sprawdzenie poprawnej instalacji:**
+   ```bash
+   nmap -v
+   ```
+
+4. **Zamrożenie stanu kontenera (commit):**
+   ```powershell
+   docker commit happy_babbage adam55/ubuntu-nmap
+   ```
+
+5. **Analiza obrazu w GUI Docker Desktop za pomocą Docker Scout:**
+   - Wyświetlenie podatności CVE dla obrazu `adam55/ubuntu-nmap`
+   - Obraz zapisany lokalnie: `adam55/ubuntu-nmap:latest`
+
+## Rezultat
+Obraz z preinstalowanym `nmap` gotowy do dalszych testów, np. uruchamiania w innych kontenerach lub środowiskach.
+
+---
+
+🕵️‍♂️ Autor: Adam (CyberFaust55)  
+📆 Data: Czerwiec 2025  
